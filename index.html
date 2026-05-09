@@ -1,198 +1,295 @@
-# `index.html`
+# Updated DADDY SCRIPT Website
 
 ```html
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DADDY SCRIPT</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DADDY SCRIPT</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: black;
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-    }
+body{
+  font-family:'Orbitron',sans-serif;
+  background:#030303;
+  color:white;
+  overflow-x:hidden;
+}
 
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(0,255,255,0.12), rgba(0,0,0,0.95));
-      z-index: -1;
-    }
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
 
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.overlay{
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at center,
+  rgba(0,255,255,0.12),
+  rgba(0,0,0,0.96));
+  z-index:-1;
+}
 
-    .hero {
-      text-align: center;
-      padding-top: 120px;
-      animation: fadeIn 2s ease;
-    }
+.container{
+  width:100%;
+  max-width:1400px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    .hero h1 {
-      font-size: 90px;
-      font-weight: 900;
-      color: cyan;
-      text-shadow:
-        0 0 10px cyan,
-        0 0 20px cyan,
-        0 0 40px cyan;
-    }
+.hero{
+  text-align:center;
+  padding-top:120px;
+}
 
-    .hero p {
-      margin-top: 20px;
-      color: #bdbdbd;
-      font-size: 20px;
-    }
+.hero h1{
+  font-size:120px;
+  color:cyan;
+  font-weight:900;
+  letter-spacing:10px;
 
-    .buttons {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+  text-shadow:
+  0 0 15px cyan,
+  0 0 35px cyan,
+  0 0 80px cyan;
+}
 
-    .btn {
-      text-decoration: none;
-      padding: 16px 34px;
-      border-radius: 14px;
-      color: white;
-      background: rgba(0,255,255,0.15);
-      border: 1px solid cyan;
-      transition: 0.3s;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(0,255,255,0.3);
-    }
+.hero p{
+  margin-top:25px;
+  color:#cfcfcf;
+  font-size:22px;
+}
 
-    .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      background: cyan;
-      color: black;
-      box-shadow: 0 0 30px cyan;
-    }
+.buttons{
+  margin-top:45px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 100px;
-    }
+.btn{
+  text-decoration:none;
+  color:white;
+  padding:18px 38px;
+  border-radius:18px;
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 25px;
-      padding: 30px;
-      backdrop-filter: blur(15px);
-      transition: 0.4s;
-      box-shadow: 0 0 20px rgba(0,255,255,0.1);
-    }
+  background:rgba(0,255,255,0.08);
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(0,255,255,0.4);
-    }
+  border:1px solid rgba(0,255,255,0.4);
 
-    .card h2 {
-      color: cyan;
-      margin-bottom: 15px;
-      font-size: 28px;
-    }
+  transition:.35s;
 
-    .card p {
-      color: #d6d6d6;
-      line-height: 1.7;
-    }
+  backdrop-filter:blur(12px);
 
-    .download-box {
-      margin-top: 100px;
-      text-align: center;
-      padding: 50px;
-      border-radius: 30px;
-      background: rgba(0,255,255,0.08);
-      border: 1px solid rgba(0,255,255,0.2);
-      backdrop-filter: blur(20px);
-    }
+  box-shadow:
+  0 0 20px rgba(0,255,255,0.2);
+}
 
-    .download-box h2 {
-      font-size: 48px;
-      color: cyan;
-      margin-bottom: 20px;
-    }
+.btn:hover{
+  transform:translateY(-7px) scale(1.05);
 
-    .download-box p {
-      color: #cfcfcf;
-      margin-bottom: 30px;
-    }
+  background:cyan;
+  color:black;
 
-    .discord-box {
-      margin-top: 100px;
-      text-align: center;
-      padding-bottom: 100px;
-    }
+  box-shadow:
+  0 0 35px cyan;
+}
 
-    .discord-widget {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-    }
+.section-title{
+  text-align:center;
+  margin-top:120px;
+  margin-bottom:60px;
+  font-size:60px;
+  color:cyan;
 
-    footer {
-      text-align: center;
-      color: #666;
-      padding: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
+  text-shadow:
+  0 0 18px cyan;
+}
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.stats-grid,
+.download-grid,
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
 
-    @media(max-width: 768px) {
-      .hero h1 {
-        font-size: 54px;
-      }
+.card,
+.download-card{
+  background:rgba(255,255,255,0.04);
 
-      .download-box h2 {
-        font-size: 36px;
-      }
-    }
-  </style>
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:30px;
+
+  padding:35px;
+
+  backdrop-filter:blur(18px);
+
+  transition:.35s;
+
+  box-shadow:
+  0 0 25px rgba(0,255,255,0.08);
+}
+
+.card:hover,
+.download-card:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+  0 0 40px rgba(0,255,255,0.35);
+}
+
+.card h2,
+.download-card h2{
+  color:cyan;
+  margin-bottom:18px;
+  font-size:30px;
+}
+
+.card p,
+.download-card p{
+  color:#d8d8d8;
+  line-height:1.8;
+}
+
+.tag{
+  display:inline-block;
+
+  margin-bottom:20px;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  border:1px solid cyan;
+
+  color:cyan;
+
+  background:rgba(0,255,255,0.1);
+
+  font-size:12px;
+}
+
+.creator{
+  margin-top:10px;
+  margin-bottom:20px;
+  color:#8ef7ff;
+  font-size:14px;
+}
+
+ul{
+  margin-top:25px;
+  margin-bottom:30px;
+  padding-left:20px;
+}
+
+li{
+  margin-bottom:12px;
+  color:#d8d8d8;
+}
+
+.discord-box{
+  margin-top:140px;
+  text-align:center;
+}
+
+.discord-box h2{
+  font-size:60px;
+  color:cyan;
+}
+
+.discord-box p{
+  margin-top:20px;
+  color:#d0d0d0;
+}
+
+.discord-stats{
+  margin-top:40px;
+
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.stat{
+  padding:22px 34px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.04);
+
+  border:1px solid rgba(0,255,255,0.15);
+
+  backdrop-filter:blur(15px);
+}
+
+.stat h3{
+  font-size:34px;
+  color:cyan;
+}
+
+.stat p{
+  margin-top:8px;
+  color:#bdbdbd;
+  font-size:14px;
+}
+
+.discord-widget{
+  margin-top:50px;
+  display:flex;
+  justify-content:center;
+}
+
+iframe{
+  border-radius:25px;
+
+  box-shadow:
+  0 0 35px rgba(0,255,255,0.2);
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  margin-top:80px;
+  color:#666;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:768px){
+
+.hero h1{
+  font-size:60px;
+}
+
+.section-title{
+  font-size:40px;
+}
+
+.discord-box h2{
+  font-size:42px;
+}
+
+}
+
+</style>
 </head>
 <body>
 
@@ -201,181 +298,341 @@
 
 <div class="container">
 
-  <section class="hero">
-    <h1>DADDY SCRIPT</h1>
-    <p>Developer • Scripts • Community • Projects</p>
+<section class="hero">
 
-    <div class="buttons">
-      <a class="btn" href="#download">DOWNLOAD</a>
-      <a class="btn" href="https://discord.gg/DEINLINK" target="_blank">DISCORD</a>
-    </div>
-  </section>
+<h1>DADDY SCRIPT</h1>
 
-  <section class="card-grid">
+<p>
+Premium Bloxd Clients • Modern UI • Smooth Gameplay • Active Community
+</p>
 
-    <div class="card">
-      <h2>ABOUT ME</h2>
-      <p>
-        Yo 👋
-        Ich bin Daddy Script.
-        Ich mache Scripts, Webseiten und coole Projekte.
-        Willkommen auf meiner offiziellen Seite.
-      </p>
-    </div>
+<div class="buttons">
 
-    <div class="card">
-      <h2>FEATURES</h2>
-      <p>
-        ✔ Modern UI<br>
-        ✔ Fast Scripts<br>
-        ✔ Active Discord<br>
-        ✔ Free Downloads<br>
-        ✔ Community Support
-      </p>
-    </div>
+<a class="btn" href="#downloads">
+DOWNLOADS
+</a>
 
-    <div class="card">
-      <h2>STATUS</h2>
-      <p>
-        🟢 Website Online<br>
-        🟢 Discord Active<br>
-        🟢 Scripts Updated<br>
-        🟢 Community Growing
-      </p>
-    </div>
+<a class="btn" href="https://discord.gg/8JfA7EHWXn" target="_blank">
+JOIN DISCORD
+</a>
 
-  </section>
+</div>
 
-  <section class="download-box" id="download">
-    <h2>DOWNLOAD SCRIPT</h2>
-    <p>
-      Lade hier den neuesten Script herunter.
-    </p>
+</section>
 
-    <a class="btn" href="script.zip" download>
-      DOWNLOAD NOW
-    </a>
-  </section>
+<h1 class="section-title">
+CLIENT FEATURES
+</h1>
 
-  <section class="discord-box">
-    <h2 style="font-size:48px;color:cyan;">
-      JOIN THE DISCORD
-    </h2>
+<section class="feature-grid">
 
-    <p style="margin-top:20px;color:#ccc;">
-      Trete der Community bei.
-    </p>
+<div class="card">
+<h2>COMBAT</h2>
+<p>
+Advanced combat modules for smoother PvP experience.
+</p>
 
-    <div class="buttons" style="margin-top:30px;">
-      <a class="btn" href="https://discord.gg/DEINLINK" target="_blank">
-        JOIN DISCORD
-      </a>
-    </div>
+<ul>
+<li>✔ KillAura</li>
+<li>✔ Aim Assist</li>
+<li>✔ Reach Display</li>
+<li>✔ Auto Sprint</li>
+</ul>
+</div>
 
-    <div class="discord-widget">
-      <iframe
-        src="https://discord.com/widget?id=DEINE_SERVER_ID&theme=dark"
-        width="350"
-        height="500"
-        allowtransparency="true"
-        frameborder="0"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-      </iframe>
-    </div>
-  </section>
+<div class="card">
+<h2>VISUALS</h2>
+<p>
+Useful visual modules and modern HUD features.
+</p>
+
+<ul>
+<li>✔ ESP</li>
+<li>✔ Keystrokes</li>
+<li>✔ Fullbright</li>
+<li>✔ Custom HUD</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>MOVEMENT</h2>
+<p>
+Smooth movement and better gameplay controls.
+</p>
+
+<ul>
+<li>✔ Scaffold</li>
+<li>✔ Auto Walk</li>
+<li>✔ Speed Display</li>
+<li>✔ Better Controls</li>
+</ul>
+</div>
+
+</section>
+
+<section id="downloads">
+
+<h1 class="section-title">
+CLIENT DOWNLOADS
+</h1>
+
+<div class="download-grid">
+
+<div class="download-card">
+
+<span class="tag">
+MOST STABLE
+</span>
+
+<h2>RISE CLIENT</h2>
+
+<div class="creator">
+Created by BlatantBloxdPlayer
+</div>
+
+<p>
+One of the smoothest Bloxd clients with modern visuals and useful modules.
+</p>
+
+<ul>
+<li>✔ KillAura</li>
+<li>✔ Scaffold</li>
+<li>✔ ESP</li>
+<li>✔ FPS Boost</li>
+<li>✔ Keystrokes</li>
+<li>✔ Fullbright</li>
+</ul>
+
+<a class="btn" href="rise client.txt" download>
+DOWNLOAD
+</a>
+
+</div>
+
+<div class="download-card">
+
+<span class="tag">
+POPULAR CLIENT
+</span>
+
+<h2>SHITIZEN CLIENT</h2>
+
+<div class="creator">
+Created by TOMO
+</div>
+
+<p>
+Stylish client with smooth gameplay and clean visual modules.
+</p>
+
+<ul>
+<li>✔ KillAura</li>
+<li>✔ ESP</li>
+<li>✔ Keystrokes</li>
+<li>✔ Custom HUD</li>
+<li>✔ Scaffold</li>
+<li>✔ FPS Boost</li>
+</ul>
+
+<a class="btn" href="Shitizen Client ..txt" download>
+DOWNLOAD
+</a>
+
+</div>
+
+<div class="download-card">
+
+<span class="tag">
+LIGHTWEIGHT
+</span>
+
+<h2>TUNG CLIENT</h2>
+
+<div class="creator">
+Created by Marcus
+</div>
+
+<p>
+Lightweight client focused on speed and smooth performance.
+</p>
+
+<ul>
+<li>✔ ESP</li>
+<li>✔ FPS Boost</li>
+<li>✔ Keystrokes</li>
+<li>✔ Better Performance</li>
+<li>✔ Smooth UI</li>
+<li>✔ Auto Sprint</li>
+</ul>
+
+<a class="btn" href="tung client.txt" download>
+DOWNLOAD
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="discord-box">
+
+<h2>
+JOIN THE DISCORD
+</h2>
+
+<p>
+Updates • Community • Support • New Releases
+</p>
+
+<div class="discord-stats">
+
+<div class="stat">
+<h3 id="memberCount">0</h3>
+<p>ONLINE</p>
+</div>
+
+<div class="stat">
+<h3 id="totalMembers">0</h3>
+<p>MEMBERS</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>ACTIVE</p>
+</div>
+
+</div>
+
+<div class="buttons">
+<a class="btn" href="https://discord.gg/8JfA7EHWXn" target="_blank">
+JOIN NOW
+</a>
+</div>
+
+<div class="discord-widget">
+
+<iframe
+src="https://discord.com/widget?id=1501617826530857020&theme=dark"
+width="380"
+height="520"
+allowtransparency="true"
+frameborder="0"
+sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+</iframe>
+
+</div>
+
+</section>
 
 </div>
 
 <footer>
-  © 2026 DADDY SCRIPT — ALL RIGHTS RESERVED
+© 2026 DADDY SCRIPT — ALL RIGHTS RESERVED
 </footer>
 
 <script>
-  const canvas = document.getElementById('bg');
-  const ctx = canvas.getContext('2d');
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
 
-  const particles = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  for (let i = 0; i < 150; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 2,
-      speedY: Math.random() * 1 + 0.2
-    });
-  }
+const particles = [];
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+for(let i=0;i<200;i++){
 
-    ctx.fillStyle = 'cyan';
+particles.push({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  size:Math.random()*2.5,
+  speedY:Math.random()*1+0.2
+});
 
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
+}
 
-      p.y += p.speedY;
+function animate(){
 
-      if (p.y > canvas.height) {
-        p.y = 0;
-        p.x = Math.random() * canvas.width;
-      }
-    });
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    requestAnimationFrame(animate);
-  }
+ctx.fillStyle='cyan';
 
-  animate();
+particles.forEach(p=>{
 
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fill();
+
+p.y += p.speedY;
+
+if(p.y > canvas.height){
+
+p.y = 0;
+p.x = Math.random()*canvas.width;
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+window.addEventListener('resize',()=>{
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+});
+
+
+// DISCORD STATS
+
+async function updateDiscordStats(){
+
+try{
+
+const response = await fetch(
+'https://discord.com/api/guilds/1501617826530857020/widget.json'
+);
+
+const data = await response.json();
+
+// ONLINE MEMBERS
+
+document.getElementById('memberCount').innerText =
+data.presence_count || '0';
+
+// TOTAL MEMBERS
+
+document.getElementById('totalMembers').innerText =
+data.members ? data.members.length : '0';
+
+}catch(error){
+
+console.log('Discord widget needs to be enabled');
+
+}
+
+}
+
+updateDiscordStats();
+
 </script>
 
 </body>
 </html>
 ```
 
-# WICHTIG
+## IMPORTANT
 
-Ersetze:
+Enable this in Discord:
 
-```txt
-DEINLINK
-```
+* Server Settings
+* Widget
+* Enable Server Widget
 
-mit deinem Discord Invite Link.
-
-Und:
-
-```txt
-DEINE_SERVER_ID
-```
-
-mit deiner Discord Server ID.
-
----
-
-# SO LÄDST DU ES HOCH
-
-1. Öffne dein GitHub Repository
-2. Öffne `index.html`
-3. Alles löschen
-4. Diesen kompletten Code einfügen
-5. `Commit changes`
-6. 1 Minute warten
-7. Seite neu laden
-
----
-
-# SCRIPT DOWNLOAD
-
-Wenn du eine Datei downloadbar machen willst:
-
-1. Lade z.B. `script.zip` in dein Repository hoch
-2. Der Download Button funktioniert automatisch
+Otherwise the real member count will not work.
