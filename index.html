@@ -1,1 +1,381 @@
-<h1>Hallo</h1>
+# `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DADDY SCRIPT</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,255,255,0.12), rgba(0,0,0,0.95));
+      z-index: -1;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 120px;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero h1 {
+      font-size: 90px;
+      font-weight: 900;
+      color: cyan;
+      text-shadow:
+        0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      color: #bdbdbd;
+      font-size: 20px;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 14px;
+      color: white;
+      background: rgba(0,255,255,0.15);
+      border: 1px solid cyan;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0,255,255,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: cyan;
+      color: black;
+      box-shadow: 0 0 30px cyan;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 100px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      transition: 0.4s;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(0,255,255,0.4);
+    }
+
+    .card h2 {
+      color: cyan;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    .card p {
+      color: #d6d6d6;
+      line-height: 1.7;
+    }
+
+    .download-box {
+      margin-top: 100px;
+      text-align: center;
+      padding: 50px;
+      border-radius: 30px;
+      background: rgba(0,255,255,0.08);
+      border: 1px solid rgba(0,255,255,0.2);
+      backdrop-filter: blur(20px);
+    }
+
+    .download-box h2 {
+      font-size: 48px;
+      color: cyan;
+      margin-bottom: 20px;
+    }
+
+    .download-box p {
+      color: #cfcfcf;
+      margin-bottom: 30px;
+    }
+
+    .discord-box {
+      margin-top: 100px;
+      text-align: center;
+      padding-bottom: 100px;
+    }
+
+    .discord-widget {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .download-box h2 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div class="overlay"></div>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>DADDY SCRIPT</h1>
+    <p>Developer • Scripts • Community • Projects</p>
+
+    <div class="buttons">
+      <a class="btn" href="#download">DOWNLOAD</a>
+      <a class="btn" href="https://discord.gg/DEINLINK" target="_blank">DISCORD</a>
+    </div>
+  </section>
+
+  <section class="card-grid">
+
+    <div class="card">
+      <h2>ABOUT ME</h2>
+      <p>
+        Yo 👋
+        Ich bin Daddy Script.
+        Ich mache Scripts, Webseiten und coole Projekte.
+        Willkommen auf meiner offiziellen Seite.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>FEATURES</h2>
+      <p>
+        ✔ Modern UI<br>
+        ✔ Fast Scripts<br>
+        ✔ Active Discord<br>
+        ✔ Free Downloads<br>
+        ✔ Community Support
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>STATUS</h2>
+      <p>
+        🟢 Website Online<br>
+        🟢 Discord Active<br>
+        🟢 Scripts Updated<br>
+        🟢 Community Growing
+      </p>
+    </div>
+
+  </section>
+
+  <section class="download-box" id="download">
+    <h2>DOWNLOAD SCRIPT</h2>
+    <p>
+      Lade hier den neuesten Script herunter.
+    </p>
+
+    <a class="btn" href="script.zip" download>
+      DOWNLOAD NOW
+    </a>
+  </section>
+
+  <section class="discord-box">
+    <h2 style="font-size:48px;color:cyan;">
+      JOIN THE DISCORD
+    </h2>
+
+    <p style="margin-top:20px;color:#ccc;">
+      Trete der Community bei.
+    </p>
+
+    <div class="buttons" style="margin-top:30px;">
+      <a class="btn" href="https://discord.gg/DEINLINK" target="_blank">
+        JOIN DISCORD
+      </a>
+    </div>
+
+    <div class="discord-widget">
+      <iframe
+        src="https://discord.com/widget?id=DEINE_SERVER_ID&theme=dark"
+        width="350"
+        height="500"
+        allowtransparency="true"
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 DADDY SCRIPT — ALL RIGHTS RESERVED
+</footer>
+
+<script>
+  const canvas = document.getElementById('bg');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+
+  for (let i = 0; i < 150; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2,
+      speedY: Math.random() * 1 + 0.2
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = 'cyan';
+
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+
+      p.y += p.speedY;
+
+      if (p.y > canvas.height) {
+        p.y = 0;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>
+```
+
+# WICHTIG
+
+Ersetze:
+
+```txt
+DEINLINK
+```
+
+mit deinem Discord Invite Link.
+
+Und:
+
+```txt
+DEINE_SERVER_ID
+```
+
+mit deiner Discord Server ID.
+
+---
+
+# SO LÄDST DU ES HOCH
+
+1. Öffne dein GitHub Repository
+2. Öffne `index.html`
+3. Alles löschen
+4. Diesen kompletten Code einfügen
+5. `Commit changes`
+6. 1 Minute warten
+7. Seite neu laden
+
+---
+
+# SCRIPT DOWNLOAD
+
+Wenn du eine Datei downloadbar machen willst:
+
+1. Lade z.B. `script.zip` in dein Repository hoch
+2. Der Download Button funktioniert automatisch
